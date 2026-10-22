@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- page info -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NovaCore — the portfolio of four students in web design, programming, UI/UX and IT.">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#04050b">
+    <title>NovaCore — Portfolio</title>
+
+    <!-- tab icon: a small "NC" badge drawn as an SVG -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial Black,Arial' font-size='26' font-weight='900' text-anchor='middle' fill='white'%3ENC%3C/text%3E%3C/svg%3E">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+    <!-- styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+<!--
+    NOVACORE PORTFOLIO — pure HTML + CSS, zero JavaScript.
+    • profiles, award viewer and phone menu open with the CSS :target selector
+    • hyperdrive + dark mode are hidden checkboxes read with :has()
+    • reveals, the typed terminal command and nav highlight are CSS scroll-driven animations
+-->
+
+
+<!-- ===================== ICONS (drawn once, reused with <use>) ===================== -->
+<svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-fb" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M13.5 21v-7.2h2.4l.4-2.9h-2.8V9.1c0-.8.2-1.4 1.4-1.4h1.5V5.1c-.3 0-1.1-.1-2.2-.1-2.2 0-3.6 1.3-3.6 3.7v2.2H8.2v2.9h2.4V21h2.9z"/>
+    </symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+        </g>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </symbol>
+</svg>
+
+
+<!-- ===================== SWITCHES (hidden checkboxes) ===================== -->
+<input type="checkbox" id="warp" class="sr-toggle" aria-label="Hyperdrive">
+<input type="checkbox" id="dark" class="sr-toggle" aria-label="Dark mode">
+
+
+<!-- ===================== BACKGROUND ===================== -->
+<div class="nebula" aria-hidden="true"></div>
+<div class="space" aria-hidden="true">
+    <i class="s1"></i>
+    <i class="s2"></i>
+    <i class="s3"></i>
+</div>
+<div class="warp" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+    <nav class="nav-links" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#crew">Crew</a>
+        <a href="#awards">Awards</a>
+        <a href="#projects">Projects</a>
+    </nav>
+
+    <div class="nav-tools">
+        <!-- neon (the default, colourful look) / dark (black, neon edges only) -->
+        <label for="dark" class="switch" title="Switch between neon and dark">
+            <span class="sr-only">Dark mode</span>
+            <span class="switch-knob" aria-hidden="true"></span>
+            <span class="switch-opt o-neon" aria-hidden="true">NEON</span>
+            <span class="switch-opt o-dark" aria-hidden="true">DARK</span>
+        </label>
+
+        <a href="#contact" class="nav-cta">Contact <span aria-hidden="true">↗</span></a>
+
+        <a href="#menu" class="burger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+</header>
+
+
+<main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-label="Introduction">
+        <div class="hero-grid">
+            <div class="hero-copy">
+                <p class="status"><span class="dot"></span> SYSTEM ONLINE <span class="sep">/</span> PORTFOLIO 2026</p>
+
+                <h1 class="hero-title">
+                    <span class="t-line"><span>We are</span></span>
+                    <span class="t-line">
+                        <span class="glitch" data-text="NovaCore."><span class="grad">NovaCore.</span></span>
+                    </span>
+                </h1>
+
+                <p class="hero-lead">
+                    We're four students in <em>web design</em>, <em>programming</em>,
+                    <em>UI/UX</em> and <em>IT</em>.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#crew" class="btn btn-primary">Meet the crew <span class="arrow" aria-hidden="true">→</span></a>
+                </div>
+            </div>
+
+            <!-- the orb is a label: clicking it ticks #warp (hyperdrive) -->
+            <div class="orb-wrap">
+                <label for="warp" class="orb" title="Click to engage hyperdrive">
+                    <span class="sr-only">Toggle hyperdrive</span>
+                    <span class="orb-glow" aria-hidden="true"></span>
+                    <span class="orb-ring r1" aria-hidden="true"></span>
+                    <span class="orb-ring r2" aria-hidden="true"></span>
+                    <span class="orb-ring r3" aria-hidden="true"></span>
+                    <span class="orb-core" aria-hidden="true"><b>NC</b></span>
+                    <span class="orb-chip c1" aria-hidden="true">✦ Carl</span>
+                    <span class="orb-chip c2" aria-hidden="true">⌘ Bien</span>
+                    <span class="orb-chip c3" aria-hidden="true">◐ Keyzie</span>
+                    <span class="orb-chip c4" aria-hidden="true">⚙ BJ</span>
+                    <span class="orb-hint" aria-hidden="true"></span>
+                </label>
+            </div>
+        </div>
+
+        <ul class="hud" aria-label="Group stats">
+            <li>
+                <b class="count" style="--to: 4"><span class="sr-only">4</span></b>
+                <span>Members</span>
+            </li>
+            <li>
+                <b class="count" style="--to: 8"><span class="sr-only">8</span></b>
+                <span>Awards</span>
+            </li>
+            <li>
+                <b class="count" style="--to: 8"><span class="sr-only">8</span></b>
+                <span>Projects</span>
+            </li>
+            <li>
+                <b class="count" style="--to: 12"><span class="sr-only">12</span></b>
+                <span>Skills</span>
+            </li>
+        </ul>
+
+        <a href="#about" class="cue" aria-label="Scroll to About"><i></i>SCROLL</a>
+    </section>
+
+
+    <!-- ===================== 01 ABOUT ===================== -->
+    <section class="sec" id="about">
+        <div class="wrap">
+            <header class="sec-head reveal">
+                <p class="sec-tag">About // who we are</p>
+                <h2 class="sec-title">What we <span class="grad">bring.</span></h2>
+            </header>
+
+            <div class="about-intro reveal">
+                <blockquote class="about-quote">
+                    <p>“Different talents, <span class="grad">one shared goal.</span>”</p>
+                    <cite>NovaCore motto</cite>
+                </blockquote>
+            </div>
+
+            <div class="fields">
+                <article class="field reveal" style="--a: #a78bfa">
+                    <div class="field-top">
+                        <span class="field-icon" aria-hidden="true">✦</span>
+                        <span class="field-no">01</span>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>How a website looks and feels: layouts, colors and visuals.</p>
+                    <ul class="chips">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Creativity</li>
+                    </ul>
+                    <a href="#p-carl" class="field-lead">
+                        <img src="carl.jpg" alt="">
+                        <span>Led by <b>Carl</b></span>
+                        <i aria-hidden="true">→</i>
+                    </a>
+                </article>
+
+                <article class="field reveal" style="--a: #60a5fa">
+                    <div class="field-top">
+                        <span class="field-icon" aria-hidden="true">⌘</span>
+                        <span class="field-no">02</span>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>The logic behind the screen: code that solves real problems.</p>
+                    <ul class="chips">
+                        <li>Problem Solving</li>
+                        <li>HTML</li>
+                        <li>Logical Thinking</li>
+                    </ul>
+                    <a href="#p-bien" class="field-lead">
+                        <img src="bien-photo.jpg" alt="">
+                        <span>Led by <b>Bien</b></span>
+                        <i aria-hidden="true">→</i>
+                    </a>
+                </article>
+
+                <article class="field reveal" style="--a: #f472b6">
+                    <div class="field-top">
+                        <span class="field-icon" aria-hidden="true">◐</span>
+                        <span class="field-no">03</span>
+                    </div>
+                    <h3>UI / UX Design</h3>
+                    <p>Interfaces that are clear, friendly and easy to use.</p>
+                    <ul class="chips">
+                        <li>Creativity</li>
+                        <li>Layout Design</li>
+                        <li>Teamwork</li>
+                    </ul>
+                    <a href="#p-keyzie" class="field-lead">
+                        <img src="keyzie.jpg" alt="">
+                        <span>Led by <b>Keyzie</b></span>
+                        <i aria-hidden="true">→</i>
+                    </a>
+                </article>
+
+                <article class="field reveal" style="--a: #22d3ee">
+                    <div class="field-top">
+                        <span class="field-icon" aria-hidden="true">⚙</span>
+                        <span class="field-no">04</span>
+                    </div>
+                    <h3>IT</h3>
+                    <p>The computers and systems that keep everything running.</p>
+                    <ul class="chips">
+                        <li>Computer Skills</li>
+                        <li>Teamwork</li>
+                        <li>Communication</li>
+                        <li>Problem Solving</li>
+                    </ul>
+                    <a href="#p-bj" class="field-lead">
+                        <img src="bj.jpg" alt="">
+                        <span>Led by <b>BJ</b></span>
+                        <i aria-hidden="true">→</i>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== 02 CREW ===================== -->
+    <section class="sec" id="crew">
+        <div class="wrap">
+            <header class="sec-head reveal">
+                <p class="sec-tag">Crew // the people</p>
+                <h2 class="sec-title">Meet the <span class="grad">crew.</span></h2>
+                <p class="sec-sub">Hover a pass to scan it. Click it to open the full profile.</p>
+            </header>
+
+            <div class="crew">
+                <!-- Carl -->
+                <div class="hang">
+                    <a href="#p-carl" class="badge" style="--d: -1s">
+                        <span class="lanyard" aria-hidden="true"></span>
+                        <span class="badge-body">
+                            <span class="badge-top">
+                                <span>NOVACORE</span>
+                                <span class="slot"></span>
+                                <span>CREW PASS</span>
+                            </span>
+                            <span class="badge-photo">
+                                <img src="carl.jpg" alt="Carl Cedric L. Esteves">
+                                <span class="scan" aria-hidden="true"></span>
+                            </span>
+                            <span class="badge-id">ID NC-001 · WEB DESIGNER</span>
+                            <span class="badge-name">Carl Cedric L. Esteves</span>
+                            <span class="badge-bio">Creating clean designs and meaningful digital experiences.</span>
+                            <span class="badge-foot">
+                                <span class="barcode" aria-hidden="true"></span>
+                                <span class="badge-open">OPEN ↗</span>
+                            </span>
+                            <span class="holo" aria-hidden="true"></span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Bien -->
+                <div class="hang">
+                    <a href="#p-bien" class="badge" style="--d: -3.2s">
+                        <span class="lanyard" aria-hidden="true"></span>
+                        <span class="badge-body">
+                            <span class="badge-top">
+                                <span>NOVACORE</span>
+                                <span class="slot"></span>
+                                <span>CREW PASS</span>
+                            </span>
+                            <span class="badge-photo">
+                                <img src="bien-photo.jpg" alt="Bienvenido L. Bustria II">
+                                <span class="scan" aria-hidden="true"></span>
+                            </span>
+                            <span class="badge-id">ID NC-002 · PROGRAMMER</span>
+                            <span class="badge-name">Bienvenido L. Bustria II</span>
+                            <span class="badge-bio">Turning ideas into practical programs and solutions.</span>
+                            <span class="badge-foot">
+                                <span class="barcode" aria-hidden="true"></span>
+                                <span class="badge-open">OPEN ↗</span>
+                            </span>
+                            <span class="holo" aria-hidden="true"></span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Keyzie -->
+                <div class="hang">
+                    <a href="#p-keyzie" class="badge" style="--d: -2.1s">
+                        <span class="lanyard" aria-hidden="true"></span>
+                        <span class="badge-body">
+                            <span class="badge-top">
+                                <span>NOVACORE</span>
+                                <span class="slot"></span>
+                                <span>CREW PASS</span>
+                            </span>
+                            <span class="badge-photo">
+                                <img src="keyzie.jpg" alt="Keyzie R. Carbonel">
+                                <span class="scan" aria-hidden="true"></span>
+                            </span>
+                            <span class="badge-id">ID NC-003 · UI/UX DESIGNER</span>
+                            <span class="badge-name">Keyzie R. Carbonel</span>
+                            <span class="badge-bio">Designing user-friendly layouts and creative experiences.</span>
+                            <span class="badge-foot">
+                                <span class="barcode" aria-hidden="true"></span>
+                                <span class="badge-open">OPEN ↗</span>
+                            </span>
+                            <span class="holo" aria-hidden="true"></span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- BJ -->
+                <div class="hang">
+                    <a href="#p-bj" class="badge" style="--d: -4.4s">
+                        <span class="lanyard" aria-hidden="true"></span>
+                        <span class="badge-body">
+                            <span class="badge-top">
+                                <span>NOVACORE</span>
+                                <span class="slot"></span>
+                                <span>CREW PASS</span>
+                            </span>
+                            <span class="badge-photo">
+                                <img src="bj.jpg" alt="Weinch BJ R. Balagot">
+                                <span class="scan" aria-hidden="true"></span>
+                            </span>
+                            <span class="badge-id">ID NC-004 · IT STUDENT</span>
+                            <span class="badge-name">Weinch BJ R. Balagot</span>
+                            <span class="badge-bio">Exploring technology and building skills for the future.</span>
+                            <span class="badge-foot">
+                                <span class="barcode" aria-hidden="true"></span>
+                                <span class="badge-open">OPEN ↗</span>
+                            </span>
+                            <span class="holo" aria-hidden="true"></span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== 03 AWARDS ===================== -->
+    <section class="sec" id="awards">
+        <div class="wrap">
+            <header class="sec-head reveal">
+                <p class="sec-tag">Awards // hall of fame</p>
+                <h2 class="sec-title">Wins &amp; <span class="grad">recognition.</span></h2>
+                <p class="sec-sub">Hover the ring to pause it, then click any certificate to view it full size.</p>
+            </header>
+        </div>
+
+        <!-- 3D ring of certificates; each card opens its award viewer below -->
+        <div class="ring-stage reveal">
+            <div class="ring-floor" aria-hidden="true"></div>
+            <div class="ring-tilt">
+                <div class="ring">
+                    <a href="#lb-1" class="ring-card" style="--i: 0">
+                        <span class="rc-front">
+                            <img src="CC 2.jpg" alt="Best Web Design certificate — Carl Cedric L. Esteves">
+                            <span class="rc-cap">Best Web Design<small>Carl</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>01</i></span>
+                    </a>
+                    <a href="#lb-2" class="ring-card" style="--i: 1">
+                        <span class="rc-front">
+                            <img src="bien awa.jpg" alt="Programming Achievement award — Bienvenido L. Bustria II">
+                            <span class="rc-cap">Programming Achievement<small>Bien</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>02</i></span>
+                    </a>
+                    <a href="#lb-3" class="ring-card" style="--i: 2">
+                        <span class="rc-front">
+                            <img src="KEYZIE AWA.jpg" alt="Design Achievement award — Keyzie R. Carbonel">
+                            <span class="rc-cap">Design Achievement<small>Keyzie</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>03</i></span>
+                    </a>
+                    <a href="#lb-4" class="ring-card" style="--i: 3">
+                        <span class="rc-front">
+                            <img src="BJ AWA.jpg" alt="Academic Achievement award — Weinch BJ R. Balagot">
+                            <span class="rc-cap">Academic Achievement<small>BJ</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>04</i></span>
+                    </a>
+                    <a href="#lb-5" class="ring-card" style="--i: 4">
+                        <span class="rc-front">
+                            <img src="CC 1.jpg" alt="Certificate of Participation — Carl Cedric L. Esteves">
+                            <span class="rc-cap">Certificate of Participation<small>Carl</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>05</i></span>
+                    </a>
+                    <a href="#lb-6" class="ring-card" style="--i: 5">
+                        <span class="rc-front">
+                            <img src="bien cer.jpg" alt="Certificate of Participation — Bienvenido L. Bustria II">
+                            <span class="rc-cap">Certificate of Participation<small>Bien</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>06</i></span>
+                    </a>
+                    <a href="#lb-7" class="ring-card" style="--i: 6">
+                        <span class="rc-front">
+                            <img src="KEYZIE CER.jpg" alt="Certificate of Participation — Keyzie R. Carbonel">
+                            <span class="rc-cap">Certificate of Participation<small>Keyzie</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>07</i></span>
+                    </a>
+                    <a href="#lb-8" class="ring-card" style="--i: 7">
+                        <span class="rc-front">
+                            <img src="BJ CER.jpg" alt="Certificate of Participation — Weinch BJ R. Balagot">
+                            <span class="rc-cap">Certificate of Participation<small>BJ</small></span>
+                        </span>
+                        <span class="rc-back" aria-hidden="true"><b>NC</b><i>08</i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== 04 PROJECTS ===================== -->
+    <section class="sec" id="projects">
+        <div class="wrap">
+            <header class="sec-head reveal">
+                <p class="sec-tag">Projects // what we've made</p>
+                <h2 class="sec-title">Things we've <span class="grad">built.</span></h2>
+                <p class="sec-sub">Click any project to open the profile of the member who made it.</p>
+            </header>
+
+            <!-- a terminal that lists the projects; each row opens its maker's profile -->
+            <div class="term reveal">
+                <div class="term-bar">
+                    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="term-title">novacore@portfolio: ~/projects</span>
+                    <span class="term-shell" aria-hidden="true">zsh</span>
+                </div>
+
+                <div class="term-body">
+                    <p class="term-cmd"><span class="ps"><b>novacore@portfolio</b> ~ %</span> <span class="typed">ls -la ./projects/</span></p>
+                    <p class="term-out">total 8</p>
+
+                    <ol class="term-list">
+                        <li>
+                            <a href="#p-carl" class="t-row" style="--a: #a78bfa">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">carl</span>
+                                <span class="t-tag">web-design</span>
+                                <span class="t-name">Personal Portfolio Website<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p-carl" class="t-row" style="--a: #a78bfa">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">carl</span>
+                                <span class="t-tag">web-design</span>
+                                <span class="t-name">School Website Design<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p-bien" class="t-row" style="--a: #60a5fa">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">bien</span>
+                                <span class="t-tag">programming</span>
+                                <span class="t-name">Simple Calculator Program<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p-bien" class="t-row" style="--a: #60a5fa">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">bien</span>
+                                <span class="t-tag">programming</span>
+                                <span class="t-name">Student Information System<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p-keyzie" class="t-row" style="--a: #f472b6">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">keyzie</span>
+                                <span class="t-tag">ui-ux</span>
+                                <span class="t-name">Mobile App Interface<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p-keyzie" class="t-row" style="--a: #f472b6">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">keyzie</span>
+                                <span class="t-tag">ui-ux</span>
+                                <span class="t-name">Creative Website Layout<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p-bj" class="t-row" style="--a: #22d3ee">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">bj</span>
+                                <span class="t-tag">it</span>
+                                <span class="t-name">Computer-Based School Project<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#p-bj" class="t-row" style="--a: #22d3ee">
+                                <span class="t-perm" aria-hidden="true">drwxr-xr-x</span>
+                                <span class="t-own">bj</span>
+                                <span class="t-tag">it</span>
+                                <span class="t-name">Team Technology Project<i aria-hidden="true">/</i></span>
+                                <span class="t-open" aria-hidden="true">open ↗</span>
+                            </a>
+                        </li>
+                    </ol>
+
+                    <p class="term-cmd"><span class="ps"><b>novacore@portfolio</b> ~ %</span> <span class="caret" aria-hidden="true"></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================== 05 CONTACT ===================== -->
+    <section class="sec" id="contact">
+        <div class="wrap">
+            <div class="contact reveal">
+                <div class="contact-copy">
+                    <p class="sec-tag">Contact // open channel</p>
+                    <h2 class="sec-title">Let's build <span class="grad">something.</span></h2>
+                    <p class="sec-sub">Download a resume, give us a call or send an email. Every member is one click away.</p>
+
+                    <div class="radar" aria-hidden="true">
+                        <span class="blip b1"><i>CARL</i></span>
+                        <span class="blip b2"><i>BIEN</i></span>
+                        <span class="blip b3"><i>KEYZIE</i></span>
+                        <span class="blip b4"><i>BJ</i></span>
+                    </div>
+                </div>
+
+                <ul class="contact-list">
+                    <!-- Carl -->
+                    <li class="c-row">
+                        <img src="carl.jpg" alt="">
+                        <div class="c-who"><b>Carl Cedric L. Esteves</b><span>Web Designer</span></div>
+                        <div class="c-social">
+                            <a href="https://www.facebook.com/share/1Ezg23LX6j/" class="soc fb"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="Carl on Facebook (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/carl_16528/" class="soc ig"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="Carl on Instagram (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg>
+                            </a>
+                        </div>
+                        <div class="c-actions">
+                            <a href="RESUME.pdf" download="Carl-Esteves-Resume.pdf" class="c-btn c-primary">↓ Resume</a>
+                            <a href="tel:+639274844149" class="c-btn">☎ Call</a>
+                            <a href="mailto:carlcedric@gmail.com" class="c-btn">✉ Email</a>
+                        </div>
+                    </li>
+
+                    <!-- Bien -->
+                    <li class="c-row">
+                        <img src="bien-photo.jpg" alt="">
+                        <div class="c-who"><b>Bienvenido L. Bustria II</b><span>Programmer</span></div>
+                        <div class="c-social">
+                            <a href="https://www.facebook.com/profile.php?id=61550861322666" class="soc fb"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="Bien on Facebook (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/realest_bien/" class="soc ig"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="Bien on Instagram (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg>
+                            </a>
+                        </div>
+                        <div class="c-actions">
+                            <a href="BIEN R.pdf" download="Bienvenido-Bustria-Resume.pdf" class="c-btn c-primary">↓ Resume</a>
+                            <a href="tel:+639945434806" class="c-btn">☎ Call</a>
+                            <a href="mailto:eter4.bienn@gmail.com" class="c-btn">✉ Email</a>
+                        </div>
+                    </li>
+
+                    <!-- Keyzie -->
+                    <li class="c-row">
+                        <img src="keyzie.jpg" alt="">
+                        <div class="c-who"><b>Keyzie R. Carbonel</b><span>UI/UX Designer</span></div>
+                        <div class="c-social">
+                            <a href="https://www.facebook.com/keyzie.carbonel.2024" class="soc fb"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="Keyzie on Facebook (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/kyz.crbnl/" class="soc ig"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="Keyzie on Instagram (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg>
+                            </a>
+                        </div>
+                        <div class="c-actions">
+                            <a href="KEYZIE R.pdf" download="Keyzie-Carbonel-Resume.pdf" class="c-btn c-primary">↓ Resume</a>
+                            <a href="tel:+639123456787" class="c-btn">☎ Call</a>
+                            <a href="mailto:keyziecarbonel0@gmail.com" class="c-btn">✉ Email</a>
+                        </div>
+                    </li>
+
+                    <!-- BJ -->
+                    <li class="c-row">
+                        <img src="bj.jpg" alt="">
+                        <div class="c-who"><b>Weinch BJ R. Balagot</b><span>IT Student</span></div>
+                        <div class="c-social">
+                            <a href="https://www.facebook.com/rimas.bj.3" class="soc fb"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="BJ on Facebook (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg>
+                            </a>
+                            <a href="https://www.instagram.com/weinchieeebejey/" class="soc ig"
+                               target="_blank" rel="noopener noreferrer"
+                               aria-label="BJ on Instagram (opens in a new tab)">
+                                <svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg>
+                            </a>
+                        </div>
+                        <div class="c-actions">
+                            <a href="BJ R.pdf" download="BJ-Balagot-Resume.pdf" class="c-btn c-primary">↓ Resume</a>
+                            <a href="tel:+639936419729" class="c-btn">☎ Call</a>
+                            <a href="mailto:balagotbj94@gmail.com" class="c-btn">✉ Email</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+    <p class="neon-sign" aria-hidden="true">NOVA<span>CORE</span></p>
+
+    <div class="wrap footer-bar">
+        <p>© 2026 NovaCore. All rights reserved.</p>
+        <p class="mono">Hand-built with HTML + CSS · zero JavaScript</p>
+    </div>
+
+    <a href="#top" class="to-top" aria-label="Back to top">↑</a>
+</footer>
+
+
+<!-- ===================== PROFILE POP-UPS (open with :target) ===================== -->
+
+<!-- Carl -->
+<div class="overlay modal" id="p-carl" role="dialog" aria-modal="true" aria-labelledby="p-carl-h">
+    <a href="#_" class="ov-bg" aria-label="Close profile" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close profile">✕</a>
+
+    <article class="m-card">
+        <header class="m-head">
+            <div class="m-photo"><img src="carl.jpg" alt="Carl Cedric L. Esteves"></div>
+            <div>
+                <p class="m-id">ID NC-001 · WEB DESIGNER</p>
+                <h3 id="p-carl-h">Carl Cedric L. Esteves</h3>
+                <p class="m-bio">Creating clean designs and meaningful digital experiences.</p>
+            </div>
+        </header>
+
+        <section class="m-sec">
+            <h4>About</h4>
+            <p>
+                I am Carl Cedric, a student who enjoys technology, creativity, and learning new things.
+                I want to improve my skills and create useful websites.
+            </p>
+        </section>
+
+        <section class="m-sec">
+            <h4>Skills</h4>
+            <ul class="chips">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Web Design</li>
+                <li>Creativity</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Awards</h4>
+            <div class="m-awards">
+                <a href="#lb-1"><img src="CC 2.jpg" alt="Best Web Design certificate"><span>Best Web Design</span></a>
+                <a href="#lb-5"><img src="CC 1.jpg" alt="Certificate of Participation"><span>Certificate of Participation</span></a>
+            </div>
+        </section>
+
+        <section class="m-sec">
+            <h4>Projects</h4>
+            <ul class="m-projects">
+                <li>Personal Portfolio Website</li>
+                <li>School Website Design</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Socials</h4>
+            <div class="m-social">
+                <a href="https://www.facebook.com/share/1Ezg23LX6j/" class="m-soc fb" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg></span>
+                    <span class="soc-txt"><b>Facebook</b><small>Follow Carl</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+                <a href="https://www.instagram.com/carl_16528/" class="m-soc ig" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg></span>
+                    <span class="soc-txt"><b>Instagram</b><small>@carl_16528</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="m-actions">
+            <a href="RESUME.pdf" download="Carl-Esteves-Resume.pdf" class="btn btn-primary">↓ Download resume</a>
+            <a href="tel:+639274844149" class="btn btn-ghost">☎ Call</a>
+            <a href="mailto:carlcedric@gmail.com" class="btn btn-ghost">✉ Email</a>
+        </div>
+
+        <nav class="m-nav" aria-label="Other members">
+            <a href="#p-bj">← BJ</a>
+            <a href="#p-bien">Bien →</a>
+        </nav>
+    </article>
+</div>
+
+<!-- Bien -->
+<div class="overlay modal" id="p-bien" role="dialog" aria-modal="true" aria-labelledby="p-bien-h">
+    <a href="#_" class="ov-bg" aria-label="Close profile" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close profile">✕</a>
+
+    <article class="m-card">
+        <header class="m-head">
+            <div class="m-photo"><img src="bien-photo.jpg" alt="Bienvenido L. Bustria II"></div>
+            <div>
+                <p class="m-id">ID NC-002 · PROGRAMMER</p>
+                <h3 id="p-bien-h">Bienvenido L. Bustria II</h3>
+                <p class="m-bio">Turning ideas into practical programs and solutions.</p>
+            </div>
+        </header>
+
+        <section class="m-sec">
+            <h4>About</h4>
+            <p>
+                I am Bienvenido, a student interested in programming and technology. I enjoy solving problems,
+                learning coding concepts, and developing useful applications.
+            </p>
+        </section>
+
+        <section class="m-sec">
+            <h4>Skills</h4>
+            <ul class="chips">
+                <li>Programming</li>
+                <li>Problem Solving</li>
+                <li>HTML</li>
+                <li>Logical Thinking</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Awards</h4>
+            <div class="m-awards">
+                <a href="#lb-2"><img src="bien awa.jpg" alt="Programming Achievement award"><span>Programming Achievement</span></a>
+                <a href="#lb-6"><img src="bien cer.jpg" alt="Certificate of Participation"><span>Certificate of Participation</span></a>
+            </div>
+        </section>
+
+        <section class="m-sec">
+            <h4>Projects</h4>
+            <ul class="m-projects">
+                <li>Simple Calculator Program</li>
+                <li>Student Information System</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Socials</h4>
+            <div class="m-social">
+                <a href="https://www.facebook.com/profile.php?id=61550861322666" class="m-soc fb" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg></span>
+                    <span class="soc-txt"><b>Facebook</b><small>Follow Bien</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+                <a href="https://www.instagram.com/realest_bien/" class="m-soc ig" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg></span>
+                    <span class="soc-txt"><b>Instagram</b><small>@realest_bien</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="m-actions">
+            <a href="BIEN R.pdf" download="Bienvenido-Bustria-Resume.pdf" class="btn btn-primary">↓ Download resume</a>
+            <a href="tel:+639945434806" class="btn btn-ghost">☎ Call</a>
+            <a href="mailto:eter4.bienn@gmail.com" class="btn btn-ghost">✉ Email</a>
+        </div>
+
+        <nav class="m-nav" aria-label="Other members">
+            <a href="#p-carl">← Carl</a>
+            <a href="#p-keyzie">Keyzie →</a>
+        </nav>
+    </article>
+</div>
+
+<!-- Keyzie -->
+<div class="overlay modal" id="p-keyzie" role="dialog" aria-modal="true" aria-labelledby="p-keyzie-h">
+    <a href="#_" class="ov-bg" aria-label="Close profile" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close profile">✕</a>
+
+    <article class="m-card">
+        <header class="m-head">
+            <div class="m-photo"><img src="keyzie.jpg" alt="Keyzie R. Carbonel"></div>
+            <div>
+                <p class="m-id">ID NC-003 · UI/UX DESIGNER</p>
+                <h3 id="p-keyzie-h">Keyzie R. Carbonel</h3>
+                <p class="m-bio">Designing user-friendly layouts and creative experiences.</p>
+            </div>
+        </header>
+
+        <section class="m-sec">
+            <h4>About</h4>
+            <p>
+                I am a student who enjoys designing creative and user-friendly digital experiences.
+                I want to develop my design skills and make technology easier to use.
+            </p>
+        </section>
+
+        <section class="m-sec">
+            <h4>Skills</h4>
+            <ul class="chips">
+                <li>UI Design</li>
+                <li>Creativity</li>
+                <li>Layout Design</li>
+                <li>Teamwork</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Awards</h4>
+            <div class="m-awards">
+                <a href="#lb-3"><img src="KEYZIE AWA.jpg" alt="Design Achievement award"><span>Design Achievement</span></a>
+                <a href="#lb-7"><img src="KEYZIE CER.jpg" alt="Certificate of Participation"><span>Certificate of Participation</span></a>
+            </div>
+        </section>
+
+        <section class="m-sec">
+            <h4>Projects</h4>
+            <ul class="m-projects">
+                <li>Mobile App Interface</li>
+                <li>Creative Website Layout</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Socials</h4>
+            <div class="m-social">
+                <a href="https://www.facebook.com/keyzie.carbonel.2024" class="m-soc fb" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg></span>
+                    <span class="soc-txt"><b>Facebook</b><small>Follow Keyzie</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+                <a href="https://www.instagram.com/kyz.crbnl/" class="m-soc ig" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg></span>
+                    <span class="soc-txt"><b>Instagram</b><small>@kyz.crbnl</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="m-actions">
+            <a href="KEYZIE R.pdf" download="Keyzie-Carbonel-Resume.pdf" class="btn btn-primary">↓ Download resume</a>
+            <a href="tel:+639123456787" class="btn btn-ghost">☎ Call</a>
+            <a href="mailto:keyziecarbonel0@gmail.com" class="btn btn-ghost">✉ Email</a>
+        </div>
+
+        <nav class="m-nav" aria-label="Other members">
+            <a href="#p-bien">← Bien</a>
+            <a href="#p-bj">BJ →</a>
+        </nav>
+    </article>
+</div>
+
+<!-- BJ -->
+<div class="overlay modal" id="p-bj" role="dialog" aria-modal="true" aria-labelledby="p-bj-h">
+    <a href="#_" class="ov-bg" aria-label="Close profile" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close profile">✕</a>
+
+    <article class="m-card">
+        <header class="m-head">
+            <div class="m-photo"><img src="bj.jpg" alt="Weinch BJ R. Balagot"></div>
+            <div>
+                <p class="m-id">ID NC-004 · IT STUDENT</p>
+                <h3 id="p-bj-h">Weinch BJ R. Balagot</h3>
+                <p class="m-bio">Exploring technology and building skills for the future.</p>
+            </div>
+        </header>
+
+        <section class="m-sec">
+            <h4>About</h4>
+            <p>
+                I am an IT student interested in computers, digital technology, and learning new skills.
+                My goal is to use technology to create helpful solutions.
+            </p>
+        </section>
+
+        <section class="m-sec">
+            <h4>Skills</h4>
+            <ul class="chips">
+                <li>Computer Skills</li>
+                <li>Teamwork</li>
+                <li>Communication</li>
+                <li>Problem Solving</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Awards</h4>
+            <div class="m-awards">
+                <a href="#lb-4"><img src="BJ AWA.jpg" alt="Academic Achievement award"><span>Academic Achievement</span></a>
+                <a href="#lb-8"><img src="BJ CER.jpg" alt="Certificate of Participation"><span>Certificate of Participation</span></a>
+            </div>
+        </section>
+
+        <section class="m-sec">
+            <h4>Projects</h4>
+            <ul class="m-projects">
+                <li>Computer-Based School Project</li>
+                <li>Team Technology Project</li>
+            </ul>
+        </section>
+
+        <section class="m-sec">
+            <h4>Socials</h4>
+            <div class="m-social">
+                <a href="https://www.facebook.com/rimas.bj.3" class="m-soc fb" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-fb"/></svg></span>
+                    <span class="soc-txt"><b>Facebook</b><small>Follow BJ</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+                <a href="https://www.instagram.com/weinchieeebejey/" class="m-soc ig" target="_blank" rel="noopener noreferrer">
+                    <span class="soc-ico"><svg aria-hidden="true" focusable="false"><use href="#i-ig"/></svg></span>
+                    <span class="soc-txt"><b>Instagram</b><small>@weinchieeebejey</small></span>
+                    <i aria-hidden="true">↗</i>
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="m-actions">
+            <a href="BJ R.pdf" download="BJ-Balagot-Resume.pdf" class="btn btn-primary">↓ Download resume</a>
+            <a href="tel:+639936419729" class="btn btn-ghost">☎ Call</a>
+            <a href="mailto:balagotbj94@gmail.com" class="btn btn-ghost">✉ Email</a>
+        </div>
+
+        <nav class="m-nav" aria-label="Other members">
+            <a href="#p-keyzie">← Keyzie</a>
+            <a href="#p-carl">Carl →</a>
+        </nav>
+    </article>
+</div>
+
+
+<!-- ===================== AWARD VIEWER (open with :target, prev / next) ===================== -->
+
+<div class="overlay lb" id="lb-1" role="dialog" aria-modal="true" aria-label="Best Web Design certificate">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-8" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="CC 2.jpg" alt="Best Web Design certificate of Carl Cedric L. Esteves" loading="lazy">
+        <figcaption><i>01 / 08</i><b>Best Web Design</b><span>Carl Cedric L. Esteves</span></figcaption>
+    </figure>
+    <a href="#lb-2" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+<div class="overlay lb" id="lb-2" role="dialog" aria-modal="true" aria-label="Programming Achievement award">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-1" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="bien awa.jpg" alt="Programming Achievement award of Bienvenido L. Bustria II" loading="lazy">
+        <figcaption><i>02 / 08</i><b>Programming Achievement</b><span>Bienvenido L. Bustria II</span></figcaption>
+    </figure>
+    <a href="#lb-3" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+<div class="overlay lb" id="lb-3" role="dialog" aria-modal="true" aria-label="Design Achievement award">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-2" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="KEYZIE AWA.jpg" alt="Design Achievement award of Keyzie R. Carbonel" loading="lazy">
+        <figcaption><i>03 / 08</i><b>Design Achievement</b><span>Keyzie R. Carbonel</span></figcaption>
+    </figure>
+    <a href="#lb-4" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+<div class="overlay lb" id="lb-4" role="dialog" aria-modal="true" aria-label="Academic Achievement award">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-3" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="BJ AWA.jpg" alt="Academic Achievement award of Weinch BJ R. Balagot" loading="lazy">
+        <figcaption><i>04 / 08</i><b>Academic Achievement</b><span>Weinch BJ R. Balagot</span></figcaption>
+    </figure>
+    <a href="#lb-5" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+<div class="overlay lb" id="lb-5" role="dialog" aria-modal="true" aria-label="Certificate of Participation">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-4" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="CC 1.jpg" alt="Certificate of Participation of Carl Cedric L. Esteves" loading="lazy">
+        <figcaption><i>05 / 08</i><b>Certificate of Participation</b><span>Carl Cedric L. Esteves</span></figcaption>
+    </figure>
+    <a href="#lb-6" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+<div class="overlay lb" id="lb-6" role="dialog" aria-modal="true" aria-label="Certificate of Participation">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-5" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="bien cer.jpg" alt="Certificate of Participation of Bienvenido L. Bustria II" loading="lazy">
+        <figcaption><i>06 / 08</i><b>Certificate of Participation</b><span>Bienvenido L. Bustria II</span></figcaption>
+    </figure>
+    <a href="#lb-7" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+<div class="overlay lb" id="lb-7" role="dialog" aria-modal="true" aria-label="Certificate of Participation">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-6" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="KEYZIE CER.jpg" alt="Certificate of Participation of Keyzie R. Carbonel" loading="lazy">
+        <figcaption><i>07 / 08</i><b>Certificate of Participation</b><span>Keyzie R. Carbonel</span></figcaption>
+    </figure>
+    <a href="#lb-8" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+<div class="overlay lb" id="lb-8" role="dialog" aria-modal="true" aria-label="Certificate of Participation">
+    <a href="#_" class="ov-bg" aria-label="Close" tabindex="-1"></a>
+    <a href="#_" class="ov-x" aria-label="Close">✕</a>
+    <a href="#lb-7" class="lb-nav lb-prev" aria-label="Previous award">‹</a>
+    <figure class="lb-fig">
+        <img src="BJ CER.jpg" alt="Certificate of Participation of Weinch BJ R. Balagot" loading="lazy">
+        <figcaption><i>08 / 08</i><b>Certificate of Participation</b><span>Weinch BJ R. Balagot</span></figcaption>
+    </figure>
+    <a href="#lb-1" class="lb-nav lb-next" aria-label="Next award">›</a>
+</div>
+
+
+<!-- ===================== PHONE MENU (open with :target) ===================== -->
+<div class="overlay menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+    <a href="#_" class="ov-x" aria-label="Close menu">✕</a>
+
+    <nav class="menu-links" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#crew">Crew</a>
+        <a href="#awards">Awards</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <p class="menu-foot">NOVACORE · PORTFOLIO 2026</p>
+</div>
+
+</body>
+</html>
